@@ -1,8 +1,10 @@
 package com.LojaVirtual.controllers;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,9 +43,13 @@ public class CidadeController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
-        cidadeService.excluir(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Object> excluir(@PathVariable("id") Long id) {
+        try {
+            cidadeService.excluir(id);
+            return ResponseEntity.ok("Cidade excluída com sucesso");
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 
     @GetMapping("/{id}")

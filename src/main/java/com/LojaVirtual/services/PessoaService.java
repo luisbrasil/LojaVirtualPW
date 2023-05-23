@@ -1,6 +1,7 @@
 package com.LojaVirtual.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,8 @@ public class PessoaService {
     }
 
     public void excluir(Long id) {
-        Pessoa pessoa = pessoaRepository.findById(id).get();
+        Pessoa pessoa = pessoaRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Pessoa não encontrada."));
         pessoaRepository.delete(pessoa);
     }
 }

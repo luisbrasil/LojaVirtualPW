@@ -1,6 +1,7 @@
 package com.LojaVirtual.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,8 @@ public class CidadeService {
     }
 
     public void excluir(Long id) {
-        Cidade cidade = cidadeRepository.findById(id).get();
+        Cidade cidade = cidadeRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Cidade não encontrada."));
         cidadeRepository.delete(cidade);
     }
 }

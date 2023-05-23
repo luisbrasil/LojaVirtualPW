@@ -1,6 +1,7 @@
 package com.LojaVirtual.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,8 @@ public class CategoriaService {
     }
 
     public void excluir(Long id) {
-        Categoria categoria = categoriaRepository.findById(id).get();
+        Categoria categoria = categoriaRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Categoria não encontrada."));
         categoriaRepository.delete(categoria);
     }
 }

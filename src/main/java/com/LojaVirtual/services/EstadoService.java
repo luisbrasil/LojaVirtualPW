@@ -1,6 +1,7 @@
 package com.LojaVirtual.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,8 @@ public class EstadoService {
     }
 
     public void excluir(Long id) {
-        Estado estado = estadoRepository.findById(id).get();
+        Estado estado = estadoRepository.findById(id)
+            .orElseThrow(() -> new NoSuchElementException("Estado não encontrado."));
         estadoRepository.delete(estado);
     }
 }

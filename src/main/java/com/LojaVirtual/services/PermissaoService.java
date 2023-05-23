@@ -1,6 +1,7 @@
 package com.LojaVirtual.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,8 @@ public class PermissaoService {
     }
 
     public void excluir(Long id) {
-        Permissao permissao = permissaoRepository.findById(id).get();
+        Permissao permissao = permissaoRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Permissão não encontrada."));
         permissaoRepository.delete(permissao);
     }
 }

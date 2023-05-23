@@ -1,6 +1,7 @@
 package com.LojaVirtual.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,8 @@ public class CarrinhoCompraService {
     }
 
     public void excluir(Long id) {
-        CarrinhoCompra carrinhoCompra = carrinhoCompraRepository.findById(id).get();
+        CarrinhoCompra carrinhoCompra = carrinhoCompraRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Carrinho de Compras não encontrado."));
         carrinhoCompraRepository.delete(carrinhoCompra);
     }
 }

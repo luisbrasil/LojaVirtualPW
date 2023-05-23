@@ -1,6 +1,7 @@
 package com.LojaVirtual.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,8 @@ public class MarcaService {
     }
 
     public void excluir(Long id) {
-        Marca marca = marcaRepository.findById(id).get();
+        Marca marca = marcaRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Marca não encontrada."));
         marcaRepository.delete(marca);
     }
 }
