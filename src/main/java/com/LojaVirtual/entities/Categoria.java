@@ -6,10 +6,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "categoria")
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class Categoria extends EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

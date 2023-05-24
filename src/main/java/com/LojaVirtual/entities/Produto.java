@@ -1,6 +1,5 @@
 package com.LojaVirtual.entities;
 
-import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -11,10 +10,12 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "produto")
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class Produto extends EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -10,10 +10,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "carrinho_compra")
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class CarrinhoCompra extends EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

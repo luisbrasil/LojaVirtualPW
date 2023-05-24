@@ -8,9 +8,6 @@ import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.AccessLevel;
 
 @Data
 @MappedSuperclass
@@ -22,7 +19,4 @@ public class EntidadeBase  {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATA_ATUALIZACAO")
     private Date dataAtualizacao;
-
-    
-
 }
