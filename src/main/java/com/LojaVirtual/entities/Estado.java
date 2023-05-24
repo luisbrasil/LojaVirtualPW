@@ -10,15 +10,13 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "estado")
+@Table(name = "estado") 
 @Data
-public class Estado {
+public class Estado extends EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     public String nome;
     public String sigla;
-    public Date dataCriacao;
-    public Date dataAtualizacao;
 }

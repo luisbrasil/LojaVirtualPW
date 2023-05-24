@@ -15,7 +15,7 @@ import lombok.Data;
 @Entity
 @Table(name = "pessoa")
 @Data
-public class Pessoa {
+public class Pessoa extends EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -26,8 +26,6 @@ public class Pessoa {
     private String senha;
     private String endereco;
     private String cep;
-    private Date dataCriacao;
-    private Date dataAtualizacao;
 
     @ManyToOne
     private Cidade cidade; 

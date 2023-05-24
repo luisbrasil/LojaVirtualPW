@@ -15,7 +15,7 @@ import lombok.Data;
 @Entity
 @Table(name = "produto")
 @Data
-public class Produto {
+public class Produto extends EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -24,8 +24,7 @@ public class Produto {
     private String descricaoDetalhada;
     private double valorCusto;
     private double valorVenda;
-    private Date dataCriacao;
-    private Date dataAtualizacao;
+
 
     @ManyToOne
     private Categoria categoria;

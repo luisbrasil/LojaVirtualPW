@@ -14,14 +14,12 @@ import lombok.Data;
 @Entity
 @Table(name = "permissao")
 @Data
-public class Permissao {
+public class Permissao extends EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     
     private String nome;
-    private Date dataCriacao;
-    private Date dataAtualizacao;
 
     @ManyToMany
     private List<Pessoa> pessoas;
