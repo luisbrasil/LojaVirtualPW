@@ -38,14 +38,4 @@ public class Pessoa extends EntidadeBase {
     @OneToMany(mappedBy = "pessoa", orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @Setter(value = AccessLevel.NONE)
     private List<PermissaoPessoa> permissaoPessoas;
-
-    @ManyToMany
-    List<Permissao> permissoes;
-
-    public void setPermissaoPessoas(List<PermissaoPessoa> permissaoPessoas){
-        for(PermissaoPessoa permissaoPessoa:permissaoPessoas){
-            permissaoPessoa.setPessoa(this);
-        }
-        this.permissaoPessoas = permissaoPessoas;
-    }
 }
