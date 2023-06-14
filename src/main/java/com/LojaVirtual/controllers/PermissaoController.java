@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.LojaVirtual.entities.Permissao;
 import com.LojaVirtual.services.PermissaoService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/permissao")
 @CrossOrigin
@@ -33,12 +35,12 @@ public class PermissaoController {
     }
 
     @PostMapping()
-    public Permissao inserir(@RequestBody Permissao permissao) {
+    public Permissao inserir(@Valid @RequestBody Permissao permissao) {
         return permissaoService.inserir(permissao);
     }
 
     @PutMapping()
-    public Permissao alterar(@RequestBody Permissao permissao) {
+    public Permissao alterar(@Valid @RequestBody Permissao permissao) {
         return permissaoService.alterar(permissao);
     }
 

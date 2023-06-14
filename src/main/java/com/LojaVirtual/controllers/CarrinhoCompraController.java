@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.LojaVirtual.entities.CarrinhoCompra;
 import com.LojaVirtual.services.CarrinhoCompraService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/carrinhoCompra")
 @CrossOrigin
@@ -33,12 +35,12 @@ public class CarrinhoCompraController {
     }
 
     @PostMapping()
-    public CarrinhoCompra inserir(@RequestBody CarrinhoCompra carrinhoCompra) {
+    public CarrinhoCompra inserir(@Valid @RequestBody CarrinhoCompra carrinhoCompra) {
         return carrinhoCompraService.inserir(carrinhoCompra);
     }
 
     @PutMapping()
-    public CarrinhoCompra alterar(@RequestBody CarrinhoCompra carrinhoCompra) {
+    public CarrinhoCompra alterar(@Valid @RequestBody CarrinhoCompra carrinhoCompra) {
         return carrinhoCompraService.alterar(carrinhoCompra);
     }
 

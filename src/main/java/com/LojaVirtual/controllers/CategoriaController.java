@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.LojaVirtual.entities.Categoria;
 import com.LojaVirtual.services.CategoriaService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/categoria")
 @CrossOrigin
@@ -33,12 +35,12 @@ public class CategoriaController {
     }
 
     @PostMapping()
-    public Categoria inserir(@RequestBody Categoria categoria) {
+    public Categoria inserir(@Valid @RequestBody Categoria categoria) {
         return categoriaService.inserir(categoria);
     }
 
     @PutMapping()
-    public Categoria alterar(@RequestBody Categoria categoria) {
+    public Categoria alterar(@Valid @RequestBody Categoria categoria) {
         return categoriaService.alterar(categoria);
     }
 

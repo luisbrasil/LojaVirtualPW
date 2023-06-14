@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.LojaVirtual.entities.Estado;
 import com.LojaVirtual.services.EstadoService;
 
+import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("/api/estado")
@@ -34,12 +36,12 @@ public class EstadoController {
     }
 
     @PostMapping()
-    public Estado inserir(@RequestBody Estado estado) {
+    public Estado inserir(@Valid @RequestBody Estado estado) {
         return estadoService.inserir(estado);
     }
 
     @PutMapping()
-    public Estado alterar(@RequestBody Estado estado) {
+    public Estado alterar(@Valid @RequestBody Estado estado) {
         return estadoService.alterar(estado);
     }
 

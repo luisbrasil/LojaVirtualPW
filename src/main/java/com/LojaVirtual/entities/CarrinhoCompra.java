@@ -1,5 +1,6 @@
 package com.LojaVirtual.entities;
 
+
 import java.util.Date;
 import java.util.List;
 
@@ -7,8 +8,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -21,10 +24,17 @@ public class CarrinhoCompra extends EntidadeBase {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @NotBlank(message = "{data.not.blank}")
     private Date dataCompra;
+
     private String observacao;
+
+    @NotBlank(message = "{situacao.not.blank}")
     private String situacao;
 
-    @ManyToMany
-    private List<Pessoa> pessoas;
+    @ManyToOne
+    private Pessoa pessoa;
+
+    @OneToMany
+    private List<Produto> produtos;
 }

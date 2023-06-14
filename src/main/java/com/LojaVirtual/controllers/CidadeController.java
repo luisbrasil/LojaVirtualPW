@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.LojaVirtual.entities.Cidade;
 import com.LojaVirtual.services.CidadeService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/cidade")
 @CrossOrigin
@@ -33,12 +35,12 @@ public class CidadeController {
     }
 
     @PostMapping()
-    public Cidade inserir(@RequestBody Cidade cidade) {
+    public Cidade inserir(@Valid @RequestBody Cidade cidade) {
         return cidadeService.inserir(cidade);
     }
 
     @PutMapping()
-    public Cidade alterar(@RequestBody Cidade cidade) {
+    public Cidade alterar(@Valid @RequestBody Cidade cidade) {
         return cidadeService.alterar(cidade);
     }
 
