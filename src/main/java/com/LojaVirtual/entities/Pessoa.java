@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -22,8 +23,8 @@ import lombok.Setter;
 @EqualsAndHashCode(callSuper = false)
 public class Pessoa extends EntidadeBase {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @NotBlank(message = "{nome.not.blank}")
     private String nome;
@@ -34,6 +35,7 @@ public class Pessoa extends EntidadeBase {
     private String cep;
 
     @ManyToOne
+    @JoinColumn(name="id_cidade")
     private Cidade cidade; 
 
     @OneToMany(mappedBy = "pessoa", orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.MERGE})

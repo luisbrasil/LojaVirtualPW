@@ -19,15 +19,15 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class PermissaoPessoa extends EntidadeBase {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
     @JsonIgnore
-    @JoinColumn(name = "idPessoa")
+    @JoinColumn(name = "id_pessoa")
     private Pessoa pessoa;
 
     @ManyToOne
-    @JoinColumn(name = "idPermissao")
+    @JoinColumn(name = "id_permissao")
     private Permissao permissao;
 }

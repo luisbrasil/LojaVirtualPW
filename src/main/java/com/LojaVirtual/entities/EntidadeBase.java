@@ -12,11 +12,11 @@ import lombok.Data;
 @Data
 @MappedSuperclass
 public class EntidadeBase  {
-    @Column(name = "DATA_CRIACAO")
+    @Column(name = "data_criacao")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCriacao;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "DATA_ATUALIZACAO")
+    @Column(name = "data_atualizacao")
     private Date dataAtualizacao;
 }

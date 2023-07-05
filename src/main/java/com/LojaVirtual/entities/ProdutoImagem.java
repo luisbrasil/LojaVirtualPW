@@ -5,24 +5,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Entity
-@Table(name = "estado") 
+@Table(name = "produto_imagem")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Estado extends EntidadeBase {
+public class ProdutoImagem extends EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @NotBlank(message = "{nome.not.blank}")
-    public String nome;
-
-    @NotBlank(message = "{sigla.not.blank}")
-    @Size(min = 2, max = 2)
-    public String sigla;
+    
+    private String nome;
 }
