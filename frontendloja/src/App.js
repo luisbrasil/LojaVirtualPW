@@ -6,6 +6,10 @@ import Rodape from './components/rodape/Rodape';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ProdutoLista from './pages/produto/lista/ProdutoLista';
 import ProdutoFormulario from './pages/produto/formulario/ProdutoFormulario';
+import PermissaoLista from './pages/permissao/lista/PermissaoLista';
+import PermissaoFormulario from './pages/permissao/formulario/PermissaoFormulario';
+import EstadoLista from './pages/estado/lista/EstadoLista';
+import EstadoFormulario from './pages/estado/formulario/EstadoFormulario';
 
 export const TemaContexto = createContext();
 
@@ -22,6 +26,8 @@ function App() {
 						<Route exact path='/' Component={() => <Home />} />
 						<Route path='/produtos' Component={ProdutoLista}/>
 						<Route path='/produto-formulario' Component={ProdutoFormulario}/>
+						<Route path='/estados' Component={EstadoLista}/>
+						<Route path='/estado-formulario' Component={EstadoFormulario}/>
 					</Routes>
 					<Rodape />
 				</BrowserRouter>
