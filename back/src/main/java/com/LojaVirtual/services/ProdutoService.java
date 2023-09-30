@@ -1,10 +1,11 @@
 package com.LojaVirtual.services;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.LojaVirtual.entities.Produto;
@@ -16,8 +17,8 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    public List<Produto> buscarTodos() {
-        return produtoRepository.findAll();
+    public Page<Produto> buscarTodos(Pageable pageable) {
+        return produtoRepository.findAll(pageable);
     }
 
     public Produto buscarPorId(Long id) {
