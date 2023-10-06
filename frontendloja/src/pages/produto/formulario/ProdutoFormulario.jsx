@@ -4,10 +4,6 @@ import './ProdutoFormulario.css';
 import { ProdutoService } from "../../../services/ProdutoService";
 
 const ProdutoFormulario = (props) => {
-	//const navigate = useNavigate();
-	//const location = useLocation();
-	///const { id } = location.state || {};
-	//const { ii } = useParams();
 	const navigate = useNavigate();
 	const produtoNovo = { descricao: '', valor: 0, valorPromocional: 0 };
 	const location = useLocation();
@@ -44,14 +40,16 @@ const ProdutoFormulario = (props) => {
 				setProduto(produtoNovo);
 			});
 		}
+		listaProdutos();
 	}
 
 	return (
 		<div style={{ padding: '10px' }}>
 			<h2>Inserir ou Alterar um Produto</h2>
-			<input type="text" name="descricao" value={produto.descricao} onChange={alterarValor} /><br /><br />
-			<input type="number" name="valor" value={produto.valor} onChange={alterarValor} /><br /><br />
-			<input type="number" name="valorPromocional" value={produto.valorPromocional} onChange={alterarValor} /><br /><br />
+			<input placeholder="Descrição Curta" type="text" name="descricaoCurta" value={produto.descricaoCurta} onChange={alterarValor} /><br /><br />
+			<input placeholder="Descrição Detalhada" type="text" name="descricaoDetalhada" value={produto.descricaoDetalhada} onChange={alterarValor} /><br /><br />
+			<input placeholder="Valor de Custo" type="number" name="valorCusto" value={produto.valorCusto} onChange={alterarValor} /><br /><br />
+			<input placeholder="Valor de Venda" type="number" name="valorVenda" value={produto.valorVenda} onChange={alterarValor} /><br /><br />
 			<button onClick={salvar}>Salvar</button>
 			<button onClick={listaProdutos}>Lista Produtos</button>
 		</div>

@@ -64,18 +64,17 @@ const ProdutoLista = () => {
 			<br /><br />
 			<DataTable value={produtos.content} tableStyle={{ minWidth: '50rem' }}>
 				<Column field="id" header="Id"></Column>
-				<Column field="descricao" header="Descrição"></Column>
-				<Column field="valor" header="Valor"></Column>
-				<Column field="valorPromocional" header="Valor Promocional"></Column>
+				<Column field="descricaoCurta" header="Descrição Curta"></Column>
+				<Column field="descricaoDetalhada" header="Descrição Detalhada"></Column>
+				<Column field="valorCusto" header="Valor de Custo"></Column>
+				<Column field="valorVenda" header="Valor de Venda"></Column>
 				<Column header="Opções" body={optionColumn}></Column>
 			</DataTable>
 			<Paginator first={first} rows={rows} totalRecords={produtos.totalElements} rowsPerPageOptions={[10, 20, 30]} onPageChange={onPageChange} />
 			<ConfirmDialog visible={dialogExcluir} onHide={() => setDialogExcluir(false)} message="Deseja excluir?"
 				header="Confirmação" icon="pi pi-exclamation-triangle" accept={excluir} reject={() => setIdExcluir(null)} acceptLabel="Sim" rejectLabel="Não"/>
 
-			{/* 	{produtos.map((produto)=>
-				<p key={produto.id}>{produto.descricao} {produto.valor}</p>	
-			)} */}
+			
 		</div>
 	);
 }
