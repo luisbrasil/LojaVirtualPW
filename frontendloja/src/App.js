@@ -32,6 +32,8 @@ function App() {
 						<Route path='/estado-formulario' Component={EstadoFormulario} />
 						<Route path='/marcas' Component={MarcaLista}/>
 						<Route path='/marca-formulario' Component={MarcaFormulario}/>
+						<Route path='/permissoes' Component={PermissaoLista} />
+						<Route path='/permissao-formulario' Component={PermissaoFormulario} />
 					</Routes>
 					<Rodape />
 				</BrowserRouter>

@@ -4,10 +4,6 @@ import './PermissaoFormulario.css';
 import { PermissaoService } from "../../../services/PermissaoService";
 
 const PermissaoFormulario = (props) => {
-	//const navigate = useNavigate();
-	//const location = useLocation();
-	///const { id } = location.state || {};
-	//const { ii } = useParams();
 	const navigate = useNavigate();
 	const permissaoNovo = { descricao: '', valor: 0, valorPromocional: 0 };
 	const location = useLocation();
@@ -17,21 +13,21 @@ const PermissaoFormulario = (props) => {
 	const permissaoService = new PermissaoService();
 
 	useEffect(() => {
-		if(permissaoAlterar){
+		if (permissaoAlterar) {
 			setPermissao(permissaoAlterar);
-		}else{
+		} else {
 			setPermissao(permissaoNovo);
-		}		
+		}
 	}, []);
 
-	const listaPermissao = () =>{
-		navigate("/permissao")
+	const listaPermissaos = () => {
+		navigate("/permissoes")
 	}
 
 	const alterarValor = (event) => {
 		setPermissao({ ...permissao, [event.target.name]: event.target.value });
-	}
 
+	}
 	const salvar = () => {
 		if (permissao.id) {
 			permissaoService.alterar(permissao).then(data => {
@@ -44,14 +40,15 @@ const PermissaoFormulario = (props) => {
 				setPermissao(permissaoNovo);
 			});
 		}
+		listaPermissaos();
 	}
 
 	return (
-		<div style={{ padding: '10px' }}>
-			<h2>Inserir ou Alterar um Permissao</h2>
-			<input type="text" name="descricao" value={permissao.nome} onChange={alterarValor} /><br /><br />
+		<div className="container">
+			<h2>Inserir ou Alterar uma Permissão</h2>
+			<input placeholder="Nome" type="text" name="nome" value={permissao.nome} onChange={alterarValor} /><br /><br />
 			<button onClick={salvar}>Salvar</button>
-			<button onClick={listaPermissao}>Lista Permissao</button>
+			<button onClick={listaPermissaos}>Lista de Permissões</button>
 		</div>
 	);
 }

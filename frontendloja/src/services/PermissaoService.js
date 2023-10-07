@@ -1,21 +1,21 @@
 import axios from 'axios';
 
-export class PermissaoService{
-	URL = "http://localhost:8080/permissao";
+export class PermissaoService {
+	URL = "http://localhost:8080/api/permissao";
 
-	inserir(permissao){
+	inserir(permissao) {
 		return axios.post(this.URL, permissao);
 	}
 
-	alterar(permissao){
+	alterar(permissao) {
 		return axios.put(this.URL, permissao);
 	}
 
-	excluir(id){
-		return axios.delete(this.URL+"/"+id)
+	excluir(id) {
+		return axios.delete(this.URL + "/" + id);
 	}
 
-	listar(){
-		return axios.get(this.URL);
+	listar(page, size) {
+		return axios.get(this.URL + "?page=" + page + "&size=" + size);
 	}
 }

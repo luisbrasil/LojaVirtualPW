@@ -1,6 +1,5 @@
 package com.LojaVirtual.controllers;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
