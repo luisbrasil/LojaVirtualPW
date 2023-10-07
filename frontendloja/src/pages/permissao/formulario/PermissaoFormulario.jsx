@@ -5,7 +5,7 @@ import { PermissaoService } from "../../../services/PermissaoService";
 
 const PermissaoFormulario = (props) => {
 	const navigate = useNavigate();
-	const permissaoNovo = { descricao: '', valor: 0, valorPromocional: 0 };
+	const permissaoNovo = { nome: '' };
 	const location = useLocation();
 	const { permissaoAlterar } = location.state || {};
 

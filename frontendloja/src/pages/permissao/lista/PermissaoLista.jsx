@@ -10,7 +10,7 @@ import { Paginator } from "primereact/paginator";
 
 const PermissaoLista = () => {
 	const navigate = useNavigate();
-	const [permissaos, setPermissaos] = useState([]);
+	const [permissoes, setPermissaos] = useState([]);
 	const permissaoService = new PermissaoService();
 	const [idExcluir, setIdExcluir] = useState(null);
 	const [dialogExcluir, setDialogExcluir] = useState(false);
@@ -62,12 +62,12 @@ const PermissaoLista = () => {
 			<h2>Lista de Permissões</h2>
 			<button onClick={formulario}>Nova Permissão</button>
 			<br /><br />
-			<DataTable value={permissaos.content} tableStyle={{ minWidth: '50rem' }}>
+			<DataTable value={permissoes.content} tableStyle={{ minWidth: '50rem' }}>
 				<Column field="id" header="Id"></Column>
 				<Column field="nome" header="Nome"></Column>
 				<Column header="Opções" body={optionColumn}></Column>
 			</DataTable>
-			<Paginator first={first} rows={rows} totalRecords={permissaos.totalElements} rowsPerPageOptions={[5, 10, 20, 30]} onPageChange={onPageChange} />
+			<Paginator first={first} rows={rows} totalRecords={permissoes.totalElements} rowsPerPageOptions={[5, 10, 20, 30]} onPageChange={onPageChange} />
 			<ConfirmDialog visible={dialogExcluir} onHide={() => setDialogExcluir(false)} message="Deseja excluir?"
 				header="Confirmação" icon="pi pi-exclamation-triangle" accept={excluir} reject={() => setIdExcluir(null)} acceptLabel="Sim" rejectLabel="Não" />
 
