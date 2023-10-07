@@ -4,10 +4,6 @@ import './EstadoFormulario.css';
 import { EstadoService } from "../../../services/EstadoService";
 
 const EstadoFormulario = (props) => {
-	//const navigate = useNavigate();
-	//const location = useLocation();
-	///const { id } = location.state || {};
-	//const { ii } = useParams();
 	const navigate = useNavigate();
 	const estadoNovo = { nome: '', sigla: ''};
 	const location = useLocation();
@@ -44,13 +40,14 @@ const EstadoFormulario = (props) => {
 				setEstado(estadoNovo);
 			});
 		}
+		listaEstados();
 	}
 
 	return (
-		<div style={{ padding: '10px' }}>
+		<div className="container">
 			<h2>Inserir ou Alterar um Estado</h2>
-			<input type="text" name="nome" value={estado.nome} onChange={alterarValor} /><br /><br />
-			<input type="text" name="sigla" value={estado.sigla} onChange={alterarValor} /><br /><br />
+			<input placeholder="Nome" type="text" name="nome" value={estado.nome} onChange={alterarValor} /><br /><br />
+			<input placeholder="Sigla" type="text" name="sigla" value={estado.sigla} onChange={alterarValor} /><br /><br />
 			<button onClick={salvar}>Salvar</button>
 			<button onClick={listaEstados}>Lista Estados</button>
 		</div>

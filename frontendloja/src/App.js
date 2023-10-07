@@ -10,6 +10,8 @@ import PermissaoLista from './pages/permissao/lista/PermissaoLista';
 import PermissaoFormulario from './pages/permissao/formulario/PermissaoFormulario';
 import EstadoLista from './pages/estado/lista/EstadoLista';
 import EstadoFormulario from './pages/estado/formulario/EstadoFormulario';
+import MarcaFormulario from './pages/marca/formulario/MarcaFormulario';
+import MarcaLista from './pages/marca/lista/MarcaLista';
 
 export const TemaContexto = createContext();
 
@@ -27,7 +29,9 @@ function App() {
 						<Route path='/produtos' Component={ProdutoLista}/>
 						<Route path='/produto-formulario' Component={ProdutoFormulario}/>
 						<Route path='/estados' Component={EstadoLista}/>
-						<Route path='/estado-formulario' Component={EstadoFormulario}/>
+						<Route path='/estado-formulario' Component={EstadoFormulario} />
+						<Route path='/marcas' Component={MarcaLista}/>
+						<Route path='/marca-formulario' Component={MarcaFormulario}/>
 					</Routes>
 					<Rodape />
 				</BrowserRouter>

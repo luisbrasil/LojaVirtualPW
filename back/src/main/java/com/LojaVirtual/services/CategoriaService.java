@@ -5,6 +5,8 @@ import java.util.NoSuchElementException;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.LojaVirtual.entities.Categoria;
@@ -16,8 +18,8 @@ public class CategoriaService {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
-    public List<Categoria> buscarTodos() {
-        return categoriaRepository.findAll();
+    public Page<Categoria> buscarTodos(Pageable pageable) {
+        return categoriaRepository.findAll(pageable);
     }
 
     public Categoria buscarPorId(Long id) {

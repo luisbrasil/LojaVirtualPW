@@ -12,7 +12,7 @@ export class PermissaoService{
 	}
 
 	excluir(id){
-		return axios.delete(this.URL+"/"+id);
+		return axios.delete(this.URL+"/"+id)
 	}
 
 	listar(){

@@ -44,7 +44,7 @@ const ProdutoFormulario = (props) => {
 	}
 
 	return (
-		<div style={{ padding: '10px' }}>
+		<div className="container">
 			<h2>Inserir ou Alterar um Produto</h2>
 			<input placeholder="Descrição Curta" type="text" name="descricaoCurta" value={produto.descricaoCurta} onChange={alterarValor} /><br /><br />
 			<input placeholder="Descrição Detalhada" type="text" name="descricaoDetalhada" value={produto.descricaoDetalhada} onChange={alterarValor} /><br /><br />

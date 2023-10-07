@@ -21,8 +21,9 @@ const ProdutoLista = () => {
 		buscarProdutos();
 	}, [rows, first]);
 
-	const onPageChange = (event) =>{
-		buscarProdutos();
+	const onPageChange = (event) => {
+		setFirst(event.first);
+		setRows(event.rows);
 	}
 
 	const buscarProdutos = () => {
@@ -37,7 +38,6 @@ const ProdutoLista = () => {
 	}
 
 	const alterar = (rowData) => {
-		//console.log(rowData);
 		navigate("/produto-formulario", { state: { produtoAlterar: rowData } })
 	}
 
@@ -60,7 +60,7 @@ const ProdutoLista = () => {
 	return (
 		<div className="container">
 			<h2>Lista de Produtos</h2>
-			<button onClick={formulario}>Novo  Produto</button>
+			<button onClick={formulario}>Novo Produto</button>
 			<br /><br />
 			<DataTable value={produtos.content} tableStyle={{ minWidth: '50rem' }}>
 				<Column field="id" header="Id"></Column>
@@ -70,7 +70,7 @@ const ProdutoLista = () => {
 				<Column field="valorVenda" header="Valor de Venda"></Column>
 				<Column header="Opções" body={optionColumn}></Column>
 			</DataTable>
-			<Paginator first={first} rows={rows} totalRecords={produtos.totalElements} rowsPerPageOptions={[10, 20, 30]} onPageChange={onPageChange} />
+			<Paginator first={first} rows={rows} totalRecords={produtos.totalElements} rowsPerPageOptions={[5, 10, 20, 30]} onPageChange={onPageChange} />
 			<ConfirmDialog visible={dialogExcluir} onHide={() => setDialogExcluir(false)} message="Deseja excluir?"
 				header="Confirmação" icon="pi pi-exclamation-triangle" accept={excluir} reject={() => setIdExcluir(null)} acceptLabel="Sim" rejectLabel="Não"/>
 

@@ -5,6 +5,8 @@ import java.util.NoSuchElementException;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.LojaVirtual.entities.Estado;
@@ -16,8 +18,8 @@ public class EstadoService {
     @Autowired
     private EstadoRepository estadoRepository;
 
-    public List<Estado> buscarTodos() {
-        return estadoRepository.findAll();
+    public Page<Estado> buscarTodos(Pageable pageable) {
+        return estadoRepository.findAll(pageable);
     }
 
     public Estado buscarPorId(Long id) {

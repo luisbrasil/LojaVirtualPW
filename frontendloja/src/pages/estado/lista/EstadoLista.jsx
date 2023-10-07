@@ -6,6 +6,7 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from "primereact/button";
 import { ConfirmDialog } from 'primereact/confirmdialog';
+import { Paginator } from "primereact/paginator";
 
 const EstadoLista = () => {
 	const navigate = useNavigate();
@@ -13,13 +14,21 @@ const EstadoLista = () => {
 	const estadoService = new EstadoService();
 	const [idExcluir, setIdExcluir] = useState(null);
 	const [dialogExcluir, setDialogExcluir] = useState(false);
+	const [first, setFirst] = useState(0);
+	const [rows, setRows] = useState(10);
 
 	useEffect(() => {
 		buscarEstados();
-	}, []);
+	}, [rows, first]);
+
+	const onPageChange = (event) => {
+		setFirst(event.first);
+		setRows(event.rows);
+	}
 
 	const buscarEstados = () => {
-		estadoService.listar().then(data => {
+		const page = first / rows;
+		estadoService.listar(page, rows).then(data => {
 			setEstados(data.data);
 		})
 	}
@@ -29,7 +38,6 @@ const EstadoLista = () => {
 	}
 
 	const alterar = (rowData) => {
-		//console.log(rowData);
 		navigate("/estado-formulario", { state: { estadoAlterar: rowData } })
 	}
 
@@ -54,13 +62,13 @@ const EstadoLista = () => {
 			<h2>Lista de Estados</h2>
 			<button onClick={formulario}>Novo Estado</button>
 			<br /><br />
-			<DataTable value={estados} tableStyle={{ minWidth: '50rem' }}>
+			<DataTable value={estados.content} tableStyle={{ minWidth: '50rem' }}>
 				<Column field="id" header="Id"></Column>
 				<Column field="nome" header="Nome"></Column>
 				<Column field="sigla" header="Sigla"></Column>
 				<Column header="Opções" body={optionColumn}></Column>
 			</DataTable>
-
+			<Paginator first={first} rows={rows} totalRecords={estados.totalElements} rowsPerPageOptions={[5, 10, 20, 30]} onPageChange={onPageChange} />
 			<ConfirmDialog visible={dialogExcluir} onHide={() => setDialogExcluir(false)} message="Deseja excluir?"
 				header="Confirmação" icon="pi pi-exclamation-triangle" accept={excluir} reject={() => setIdExcluir(null)} acceptLabel="Sim" rejectLabel="Não"/>
 

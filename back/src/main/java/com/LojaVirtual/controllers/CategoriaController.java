@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,8 +32,8 @@ public class CategoriaController {
     private CategoriaService categoriaService;
 
     @GetMapping()
-    public List<Categoria> buscarTodos() {
-        return categoriaService.buscarTodos();
+    public Page<Categoria> buscarTodos(Pageable pageable) {
+        return categoriaService.buscarTodos(pageable);
     }
 
     @PostMapping()
