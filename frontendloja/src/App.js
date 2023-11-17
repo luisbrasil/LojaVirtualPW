@@ -16,6 +16,8 @@ import CategoriaLista from './pages/categoria/lista/CategoriaLista';
 import CategoriaFormulario from './pages/categoria/formulario/CategoriaFormulario';
 import CidadeLista from './pages/cidade/lista/CidadeLista';
 import CidadeFormulario from './pages/cidade/formulario/CidadeFormulario';
+import PessoaLista from './pages/pessoa/lista/PessoaLista';
+import PessoaFormulario from './pages/pessoa/formulario/PessoaFormulario';
 
 export const TemaContexto = createContext();
 
@@ -42,6 +44,8 @@ function App() {
 						<Route path='/categoria-formulario' Component={CategoriaFormulario} />
 						<Route path='/cidades' Component={CidadeLista} />
 						<Route path='/cidade-formulario' Component={CidadeFormulario} />
+						<Route path='/pessoas' Component={PessoaLista} />
+						<Route path='/pessoa-formulario' Component={PessoaFormulario} />
 					</Routes>
 					<Rodape />
 				</BrowserRouter>

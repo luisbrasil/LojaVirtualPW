@@ -45,7 +45,7 @@ const CidadeFormulario = (props) => {
 
 	return (
 		<div className="container">
-			<h2>Inserir ou Alterar um Cidade</h2>
+			<h2>Inserir ou Alterar uma Cidade</h2>
 			<input placeholder="Nome" type="text" name="nome" value={cidade.nome} onChange={alterarValor} /><br /><br />
 			<button onClick={salvar}>Salvar</button>
 			<button onClick={listaCidades}>Lista Cidades</button>

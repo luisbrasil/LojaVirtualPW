@@ -1,9 +1,10 @@
 package com.LojaVirtual.controllers;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,8 +31,8 @@ public class PessoaController {
     private PessoaService pessoaService;
 
     @GetMapping()
-    public List<Pessoa> buscarTodos() {
-        return pessoaService.buscarTodos();
+    public Page<Pessoa> buscarTodos(Pageable pageable) {
+        return pessoaService.buscarTodos(pageable);
     }
 
     @PostMapping()
