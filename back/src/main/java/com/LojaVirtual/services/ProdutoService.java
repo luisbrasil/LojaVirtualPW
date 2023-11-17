@@ -49,8 +49,9 @@ public class ProdutoService {
 
     private void notificar(Produto produto){
         ProdutoNotificacao notificacao = new ProdutoNotificacao();
-        notificacao.setDescricao("O produto " + produto.getDescricaoCurta());
-        simpMessagingTemplate
-            .convertAndSend("/produto/novo-produto", notificacao);
+        notificacao.setDescricao("O  produto "+produto.getDescricaoCurta() + 
+        " foi cadastrado");
+        simpMessagingTemplate.
+        convertAndSend("/produto/novo-produto", notificacao);
     }
 }

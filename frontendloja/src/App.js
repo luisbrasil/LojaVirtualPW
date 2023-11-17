@@ -14,6 +14,8 @@ import MarcaFormulario from './pages/marca/formulario/MarcaFormulario';
 import MarcaLista from './pages/marca/lista/MarcaLista';
 import CategoriaLista from './pages/categoria/lista/CategoriaLista';
 import CategoriaFormulario from './pages/categoria/formulario/CategoriaFormulario';
+import CidadeLista from './pages/cidade/lista/CidadeLista';
+import CidadeFormulario from './pages/cidade/formulario/CidadeFormulario';
 
 export const TemaContexto = createContext();
 
@@ -38,6 +40,8 @@ function App() {
 						<Route path='/permissao-formulario' Component={PermissaoFormulario} />
 						<Route path='/categorias' Component={CategoriaLista} />
 						<Route path='/categoria-formulario' Component={CategoriaFormulario} />
+						<Route path='/cidades' Component={CidadeLista} />
+						<Route path='/cidade-formulario' Component={CidadeFormulario} />
 					</Routes>
 					<Rodape />
 				</BrowserRouter>
